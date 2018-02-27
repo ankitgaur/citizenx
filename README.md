@@ -1,3 +1,6 @@
+CitizenX is a social networking application with a difference, the objective to engage well meaning Nigerians around the world, giving them an opportunity to share their professional and personal experiences, with a focus to inspire fellow Nigerians.
+One of our overall objectives is to ensure positive, hardworking Nigerians, stay connected and get closer to 21st century Nigeria, shunning the negative forces that strive to derail our mindset, and National pride - an unfair disadvantage to our children and the upcoming generation, doing exceedingly well, in their academic and professional endeavors, both within, and outside Nigeria.
+
 Step 1 ) Create Project
 
 cordova create FileTransfer com.citizenx.mobile citizenx

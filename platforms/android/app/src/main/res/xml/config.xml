@@ -15,12 +15,12 @@
     <feature name="FileTransfer">
         <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
     </feature>
-    <name>HelloCordova</name>
+    <name>CitizenX</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        CitizenX is a social media app with a difference.
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+        Insodel
     </author>
     <content src="index.html" />
     <access origin="*" />
