@@ -1,0 +1,4 @@
+#Mon Jul 02 21:32:53 MDT 2018
+base.0=/Users/ankitgaur/citizenx/platforms/android/app/build/intermediates/transforms/dex/release/0
+renamed.0=classes.dex
+file.0=/Users/ankitgaur/citizenx/platforms/android/app/build/intermediates/transforms/dex/release/0/classes.dex
