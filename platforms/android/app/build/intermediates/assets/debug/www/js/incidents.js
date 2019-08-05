@@ -37,30 +37,57 @@ var incidentService = {
 			desc = this.incident.description;
 			state = this.incident.state;
 			govt = this.incident.govt;
+			rating = this.incident.rating;
 			console.log(this.incident.questions);
+			
 			ques = JSON.stringify(this.incident.questions);
 			console.log(ques);
-
+			
+			if(!rating){
+				rating = "1";
+			}
+			
+			requestbody = JSON.stringify({
+				"category" : type,
+				"state" : state,
+				"city" : govt,
+				"subcategory" : cat,
+				"description" : desc,
+				"country": "Nigeria",
+				"questions": [],
+				//"questions" : ques,
+				"rating" : rating
+			});
+			
+			console.log("Ankit: " + requestbody);
+			
+			
 			$.ajax({
-				xhrFields : {
+				/*xhrFields : {
 					withCredentials : true
-				},
+				},*/
 				headers : {
-					'Authorization' : 'Bearer ' + AppConfig.token
+					'token': AppConfig.token,
+		        	'Content-Type': 'application/json'
 				},
-				url : AppConfig.appUrl + "/incidents",
-				data : {
-					"type" : type,
+				url : AppConfig.appUrl + "/incident/",
+				data : JSON.stringify({
+					"category" : type,
 					"state" : state,
-					"govt" : govt,
-					"category" : cat,
+					"city" : govt,
+					"subcategory" : cat,
 					"description" : desc,
-					"questions" : ques
-				},
+					"country": "Nigeria",
+					"questions": [],
+					//"questions" : ques,
+					"rating" : rating
+				}),
+				dataType: 'json',
 				cache : false,
-				type : "POST",
+				type : "PUT",
 				success : function(response) {
 					console.log("Ankit incident created : " + response.id);
+					document.getElementById('iid').value = response.id;
 					self.id = response.id;
 				},
 				error : function(xhr) {
@@ -105,30 +132,42 @@ var incidentService = {
 			state = this.incident.state;
 			govt = this.incident.govt;
 			desc = this.incident.description;
+			rating = this.incident.rating;
 			console.log(this.incident.questions);
 			ques = JSON.stringify(this.incident.questions);
 			console.log(ques);
 
+			if(!rating){
+				rating = "1";
+			}
+			
 			$.ajax({
-				xhrFields : {
+				/*xhrFields : {
 					withCredentials : true
-				},
+				},*/
 				headers : {
-					'Authorization' : 'Bearer ' + AppConfig.token
+					'token': AppConfig.token,
+			        'Content-Type': 'application/json'
 				},
-				url : AppConfig.appUrl + "incidents",
-				data : {
-					"type" : type,
+				url : AppConfig.appUrl + "/incident/",
+				data : JSON.stringify({
+					"category" : type,
 					"state" : state,
-					"govt" : govt,
-					"category" : cat,
+					"city" : govt,
+					"country": "Nigeria",
+					"subcategory" : cat,
 					"description" : desc,
-					"questions" : ques
-				},
+					"questions": [],
+					//"questions" : ques,
+					"rating": rating
+					
+				}),
+				dataType: 'json',
 				cache : false,
-				type : "POST",
+				type : "PUT",
 				success : function(response) {
 					console.log("Ankit incident created : " + response.id);
+					document.getElementById('iid').value = response.id;
 					self.id = response.id;
 				},
 				error : function(xhr) {
@@ -136,6 +175,8 @@ var incidentService = {
 				}
 			});
 		}
+		
+		
 
 	},
 
@@ -146,7 +187,7 @@ var incidentService = {
 
 		document.getElementById('iid').value = this.incident.id;
 		iid = document.getElementById('iid').value;
-		imgurl = AppConfig.appUrl + "incidents/image/" + iid;
+		imgurl = AppConfig.appUrl + "/image/" + iid;
 
 		console.log("Ankit url : " + iid);
 		navigator.camera.getPicture(this.uploadPhoto, function(message) {
@@ -162,7 +203,7 @@ var incidentService = {
 
 		console.log("Ankit Filename : " + imageURI);
 		iid = document.getElementById('iid').value;
-		imgurl = AppConfig.appUrl + "incidents/image/" + iid;
+		imgurl = AppConfig.appUrl + "/image/" + iid+"/";
 
 		console.log("Ankit url : " + iid);
 		var options = new FileUploadOptions();
@@ -178,31 +219,108 @@ var incidentService = {
 		options.chunkedMode = false;
 
 		var headers = {
-			'Authorization' : 'Bearer ' + AppConfig.token
+				'token': AppConfig.token
 		};
 
 		options.headers = headers;
 
-		// $.mobile.changePage("#notification");
+		// $.mobile.navigate("#notification");
 		console.log("Ankit Uploading file ");
 		var ft = new FileTransfer();
 		// var url = "incidents/image/"+this.incident.id;
 		ft.upload(imageURI, imgurl, function(result) {
 			console.log("Ankit File Upload Success");
 			console.log(JSON.stringify(result));
-			$.mobile.changePage("#notification");
+			$.mobile.navigate("#notification");
 		}, function(error) {
 			console.log("Ankit File Upload Error");
 			console.log(JSON.stringify(error));
-			// $.mobile.changePage("#notification");
+			// $.mobile.navigate("#notification");
 		}, options);
 	},
 
 	refresh : function() {
 
-		$.get(AppConfig.appUrl + "/incidents", function(data) {
-			$("#incilist").html(citizenx.app.homeTemplate(data));
+		//console.log("Ankit : Inside refresh");
+		//alert("Ankit : Inside refresh");
+		$.ajax({
+
+		    headers: {
+		        'token': AppConfig.token,
+		        'Content-Type': 'application/json'
+		    },
+		    url: AppConfig.appUrl + '/getincidents/',
+		    type: "POST",
+		    data: JSON.stringify({"sort":"date_added","order":"desc","page":1,"limit":10}),
+		    dataType: 'json',
+		    success: function(resp){
+		    	//alert("Login Successful");
+		    	//console.log("Ankit resp : " + data);
+		    	//console.log("Ankit resp : " + data.token);
+		    	
+		    	data = resp.data;
+		    	
+		    	for (var i = 0; i < data.length; i++) {
+		    	    tnow = Math.floor(Date.now() / 1000);
+		    		t1 = data[i].createdOn;
+		    		tdiff = tnow -t1;
+		    		el = data[i]
+		    		
+		    		if(tdiff <= 60){
+		    			//diff = Math.round(tdiff/60);
+		    			el['createdOnStr'] = tdiff + " seconds";
+		    			
+		    		}
+		    		else if(tdiff > 60 && tdiff <= 3600){
+		    			diff = Math.round(tdiff/60);
+		    			el['createdOnStr'] = diff + " minutes";
+		    			
+		    		}
+		    		else if(tdiff > 3600 && tdiff <= 86400){
+		    			diff = Math.round(tdiff/3600);
+		    			el['createdOnStr'] = diff + " hours";
+		    		}
+		    		else if(tdiff > 86400 && tdiff <= 604800){
+		    			diff = Math.round(tdiff/86400);
+		    			el['createdOnStr'] = diff + " days";
+		    		}
+		    		else if(tdiff > 604800 && tdiff <= 18144000){
+		    			diff = Math.round(tdiff/604800);
+		    			el['createdOnStr'] = diff + " weeks";
+		    		}
+		    		else if(tdiff > 18144000 && tdiff <= 217728000){
+		    			diff = Math.round(tdiff/18144000);
+		    			el['createdOnStr'] = diff + " months";
+		    		}
+		    		else if(tdiff > 217728000){
+		    			diff = Math.round(tdiff/217728000);
+		    			el['createdOnStr'] = diff + " years";
+		    		}
+		    		else{
+		    			ts = new Date(t1*1000);
+		    			el['createdOnStr'] = ts.toDateString();
+		    		}
+	    		
+		    	}
+		    	
+		    	console.log("Ankit :" + JSON.stringify(data));
+		    	//alert(JSON.stringify(data));
+		    	$("#incilist").html(citizenx.app.homeTemplate(data));
+		    	
+		    	$.mobile.navigate('#home');
+
+		    },
+		    error: function(){
+		    	//alert("Invalid username or password");
+		    	//$.mobile.navigate(nxt);
+		    }
 		});
+
+
+    /*old Version
+    $.get(AppConfig.appUrl + "/incidents", function(data) {
+		$("#incilist").html(citizenx.app.homeTemplate(data));
+	});*/
 	}
 
 }

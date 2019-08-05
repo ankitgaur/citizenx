@@ -30,7 +30,7 @@
         -->
 <!-- script-src 'self' http://xxxx 'unsafe-inline' 'unsafe-eval'; -->
 <meta http-equiv="Content-Security-Policy"
-	content="default-src 'self' data: gap: http://dev.insodel.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src *; img-src 'self' * data: content:;">
+	content="default-src 'self' data: gap: http://www.ipledge2nigeria.net:8000 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src *; img-src 'self' * data: content:;">
 <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
 
 <meta name="format-detection" content="telephone=no">
@@ -39,7 +39,10 @@
 	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <link rel="stylesheet" type="text/css"
+	href="css/styles.a19a70bf4dfb991ecf05.css">
+<link rel="stylesheet" type="text/css"
 	href="lib/jquery-mobile/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>CitizenX</title>
 
 <script type="text/javascript" src="cordova.js"></script>
@@ -58,30 +61,127 @@
 	<div data-role="page" id="signin">
 		<div data-role="header" data-position="fixed">
 			<!-- <h1>CitizenX</h1> -->
-			<img src="img/logo.png" class="app-banner">
+			<!-- <img src="img/logo.png" class="app-banner"> -->
 		</div>
 
 		<div class="ui-content" role="main">
-			<label for="txt-id">Email Address</label> <input type="text"
-				name="txt-id" id="txt-id" value=""> <label
-				for="txt-password">Password</label> <input type="password"
-				name="txt-password" id="txt-password" value="">
-			<!-- <fieldset data-role="controlgroup">
-				<label><input type="checkbox" name="chk-keep-signed-in"
-					id="chk-keep-signed-in"> Keep me signed in</label>
-			</fieldset> -->
-			<!-- <a href="#home" data-rel="popup"
-				data-transition="pop" data-position-to="window"
-				class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a> -->
-			<!-- <a href="#home" class="ui-btn" data-transition="pop" data-position-to="window">Submit</a> -->
-			<a href="#" data-transition="slide"
-				onclick="loginService.login('#home')"
-				class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5"
-				id="signin-submit">Submit</a>
-			<!--<p class="mc-top-margin-1-5">
-				<a href="#begin-password-reset-page">Can't access your account?</a>
-			</p>-->
+
+			<div _ngcontent-c4="" class="wrapper">
+				<div _ngcontent-c4="" class="account-pages mt-5 mb-5">
+					<div _ngcontent-c4="" class="content">
+						<div _ngcontent-c4="" class="account-pages mt-5 mb-5">
+							<div _ngcontent-c4="" class="row justify-content-center">
+								<div _ngcontent-c4="" class="col-lg-4">
+									<div _ngcontent-c4="" class="card">
+										<div _ngcontent-c4=""
+											class="card-header pt-4 pb-4 text-center bg-primary">
+											<a _ngcontent-c4="" routerlink="/" href="/"><span
+												_ngcontent-c4=""><img _ngcontent-c4="" alt=""
+													height="18" src="img/logo.png"></span></a>
+										</div>
+										<div _ngcontent-c4="" class="card-body p-4">
+											<!---->
+											<form _ngcontent-c4="" action="/" method="post" novalidate=""
+												class="ng-untouched ng-pristine ng-invalid">
+												<div _ngcontent-c4="" class="form-group mb-3">
+													<label _ngcontent-c4="" for="txt-id">Username</label><input
+														_ngcontent-c4=""
+														class="form-control ng-untouched ng-pristine ng-invalid"
+														id="txt-id" name="username" required="" type="text">
+												</div>
+												<div _ngcontent-c4="" class="form-group mb-3">
+													<label _ngcontent-c4="" for="txt-password">Password</label><input
+														_ngcontent-c4=""
+														class="form-control ng-untouched ng-pristine ng-invalid"
+														id="txt-password" name="password" required="" type="password">
+												</div>
+												<div _ngcontent-c4="" class="form-group mb-0 text-center">
+													<input _ngcontent-c4="" class="btn btn-primary"
+														type="submit" value="Submit" onclick="loginService.login('#home')">
+												</div>
+											</form>
+										</div>
+									</div>
+									<div _ngcontent-c4="" class="text-center mt-5">
+										Not Registered yet? <a _ngcontent-c4=""
+											href="#registration">Register Now</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+	</div>
+
+	<div data-role="page" id="registration">
+		<div data-role="header" data-position="fixed">
+			<!-- <h1>CitizenX</h1> -->
+			<!-- <img src="img/logo.png" class="app-banner"> -->
+		</div>
+
+		<div class="ui-content" role="main">
+			<div _ngcontent-c5="" class="wrapper">
+				<div _ngcontent-c5="" class="account-pages mt-5 mb-5">
+					<div _ngcontent-c5="" class="content">
+						<div _ngcontent-c5="" class="account-pages mt-5 mb-5">
+							<div _ngcontent-c5="" class="row justify-content-center">
+								<div _ngcontent-c5="" class="col-lg-4">
+									<div _ngcontent-c5="" class="card">
+										<div _ngcontent-c5=""
+											class="card-header pt-4 pb-4 text-center bg-primary">
+											<a _ngcontent-c5="" routerlink="/" href="/"><span
+												_ngcontent-c5=""><img _ngcontent-c5="" alt=""
+													height="18" src="img/logo.png"></span></a>
+										</div>
+										<div _ngcontent-c5="" class="card-body p-4">
+											<!---->
+											<form _ngcontent-c5="" action="/register/" method="post"
+												novalidate="" class="ng-untouched ng-pristine ng-invalid">
+												<div _ngcontent-c5="" class="form-group mb-3">
+													<label _ngcontent-c5="" for="name">Full Name</label><input
+														_ngcontent-c5=""
+														class="form-control ng-untouched ng-pristine ng-invalid"
+														id="name" name="name" required="" type="text">
+												</div>
+												<div _ngcontent-c5="" class="form-group mb-3">
+													<label _ngcontent-c5="" for="email">Email</label><input
+														_ngcontent-c5=""
+														class="form-control ng-untouched ng-pristine ng-invalid"
+														id="email" name="email" required="" type="email">
+												</div>
+												<div _ngcontent-c5="" class="form-group mb-3">
+													<label _ngcontent-c5="" for="id_username">Username</label><input
+														_ngcontent-c5=""
+														class="form-control ng-untouched ng-pristine ng-invalid"
+														id="username" name="username" required="" type="text">
+												</div>
+												<div _ngcontent-c5="" class="form-group mb-3">
+													<label _ngcontent-c5="" for="password">Password</label><input
+														_ngcontent-c5=""
+														class="form-control ng-untouched ng-pristine ng-invalid"
+														id="password" name="password" required="" type="password">
+												</div>
+												<div _ngcontent-c5="" class="form-group mb-0 text-center">
+													<input _ngcontent-c5="" class="btn btn-primary"
+														type="submit" value="Submit" onclick="loginService.register()">
+												</div>
+											</form>
+										</div>
+									</div>
+									<div _ngcontent-c5="" class="text-center mt-5">
+										Already Registered? <a _ngcontent-c5="" routerlink="/"
+											href="#signin">Login</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 	<div data-role="page" id="home">
@@ -139,12 +239,12 @@
 
 
 		<!-- <div data-role="footer" data-position="fixed" class="ui-bar">
-			<a href="#home" data-icon="alert" data-transition="slide" class="first-r">Incidents</a> 
-			<a href="#home" data-icon="info" data-transition="slide" class="second-r">News</a> 
+			<a href="#home" data-icon="alert" data-transition="slide" class="first-r">Incidents</a>
+			<a href="#home" data-icon="info" data-transition="slide" class="second-r">News</a>
 			<a href="#home" data-icon="mail" data-transition="slide" class="third-r">Polls</a>
 			<a href="#signin" data-icon="power" data-transition="slide" class="third-r">Log off</a>
-			<a href="#home" data-icon="home" 
-				data-transition="slide">Profile</a> 
+			<a href="#home" data-icon="home"
+				data-transition="slide">Profile</a>
 		</div>-->
 	</div>
 
@@ -154,22 +254,40 @@
 		{{#.}}<li style="padding: 10px;" class="ui-li-static ui-body-inherit ui-li-has-thumb">
 					<div class="post-intro-parent">
 						<div class="user-img-div">
-							<img src="img/user.png">
+							<img src="https://img.icons8.com/color/1600/circled-user-male-skin-type-1-2.png">
 						</div>
 						<div>
-							<p class="post-intro"><span class="post-author">{{author}}</span> reported an incident</p>
+							<p class="post-intro"><span class="post-author">{{createdBy}}</span> reported an incident</p>
 							<p class="post-date">{{createdOnStr}}</p>
 						</div>
-					 </div
+					</div>
 						<div>
-							<p class="post-title">{{questions.desc}}</p>
+							<p class="post-title">{{description}}</p>
 							{{#if image}}
-								<img src="http://dev.insodel.com/api/incidents/image/{{image}}" style="width: 100%;">
+								<img src="http://www.ipledge2nigeria.net:8000/api/v1/image/{{image}}/" style="width: 100%;">
 							{{/if}}
-						</div> 
-      
-					
-				</li>{{/.}}
+						</div>
+
+					<div class="cmt-status">
+						<button class="ui-btn ui-btn-icon-notext ui-corner-all ui-btn-b ui-icon-check moji-btn"></button>
+						<label style="float:left;padding:16px;">0</label>
+
+						<label style="float:right;padding:16px;">0 Comments</label>
+				  </div>
+
+					<table style='width:100%'>
+						<tr>
+    					<td style="width:90%;">
+        					<input type="text" placeholder="Write a comment.." style="width: 100%;">
+					    </td>
+    					<td style="width:10%" class="td-btn-grey">
+         				<!--<button style="padding: 8px;"><i class="ui-icon-carat-r" aria-hidden="true"></i></button>-->
+								<button class="ui-btn ui-btn-icon-notext ui-corner-all ui-btn-b ui-icon-action btn-grey"></button>
+    					</td>
+						</tr>
+					</table>
+				</li>
+				{{/.}}
 ​	</script>
 
 
@@ -515,7 +633,7 @@
 
 			<label for="principalname">VC/Principals Name</label> <input
 				type="text" name="principalname" id="principalname"></input> <a
-				href="#rating" data-transition="slide"
+				href="#states" data-transition="slide"
 				class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5"
 				id="desc-submit"
 				onclick="incidentService.next('#school_description',0)">Next</a>
@@ -3757,16 +3875,16 @@
 			<ul data-role="listview">
 
 				<li><a href="#imgupload" data-transition="slide"
-					onclick="incidentService.inext('Overall Rating','Poor',1)"><h2>Poor</h2></a></li>
+					onclick="incidentService.inext('rating','1',1)"><h2>Poor</h2></a></li>
 				<li><a href="#imgupload" data-transition="slide"
-					onclick="incidentService.inext('Overall Rating','Fair',1)"><h2>Fair</h2></a></li>
+					onclick="incidentService.inext('rating','2',1)"><h2>Fair</h2></a></li>
 				<li><a href="#imgupload" data-transition="slide"
-					onclick="incidentService.inext('Overall Rating','Good',1)"><h2>Good</h2></a></li>
+					onclick="incidentService.inext('rating','3',1)"><h2>Good</h2></a></li>
 				<li><a href="#imgupload" data-transition="slide"
-					onclick="incidentService.inext('Overall Rating','Very Good',1)"><h2>Very
+					onclick="incidentService.inext('rating','4',1)"><h2>Very
 							Good</h2></a></li>
 				<li><a href="#imgupload" data-transition="slide"
-					onclick="incidentService.inext('Overall Rating','Excellent',1)"><h2>Excellent</h2></a></li>
+					onclick="incidentService.inext('rating','5',1)"><h2>Excellent</h2></a></li>
 			</ul>
 
 		</div>
